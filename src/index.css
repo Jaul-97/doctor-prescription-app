@@ -1,0 +1,91 @@
+/* src/index.css */
+@import "tailwindcss"; /* Imports Tailwind base, components, and utilities */
+@import "tw-animate-css"; /* Imports the animation utilities for shadcn */
+
+/* Defines CSS variables for light (:root) and dark (.dark) themes */
+@layer base {
+  :root {
+    /* Light Mode Variables (HSL format) */
+    --background: 0 0% 100%; /* White background */
+    --foreground: 240 10% 3.9%; /* Dark text */
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    /* --- MODIFIED FOR BLACK BUTTON/WHITE TEXT --- */
+    --primary: 0 0% 0%; /* Black background for buttons */
+    --primary-foreground: 0 0% 100%; /* White text for buttons */
+    /* --- END MODIFICATION --- */
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%; /* Border color */
+    --input: 240 5.9% 90%; /* Input border */
+    --ring: 240 10% 3.9%; /* Focus ring */
+    --radius: 0.5rem; /* Default border radius */
+  }
+
+  .dark {
+    /* Dark Mode Variables (HSL format) */
+    --background: 240 10% 3.9%; /* Dark background */
+    --foreground: 0 0% 98%; /* Light text */
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    /* --- MODIFIED FOR BLACK BUTTON/WHITE TEXT --- */
+    --primary: 0 0% 0%; /* Black background for buttons */
+    --primary-foreground: 0 0% 100%; /* White text for buttons */
+    /* --- END MODIFICATION --- */
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%; /* Border color */
+    --input: 240 3.7% 15.9%; /* Input border */
+    --ring: 240 4.9% 83.9%; /* Focus ring */
+    /* --radius stays the same */
+  }
+}
+
+/* Applies base styles using the defined CSS variables */
+@layer base {
+  * {
+    /* Apply the border color variable to all elements by default */
+    /* @apply border-border; */ /* <-- REMOVED THIS LINE TO FIX THE ERROR */
+    /* Note: Applying outline-ring globally might be excessive.
+       Focus rings are usually applied specifically to focusable elements via Tailwind utilities (e.g., focus:ring-2).
+       If you need a default outline, consider applying it more selectively.
+       Removed 'outline-ring/50' from here.
+    */
+  }
+  body {
+    /* Apply background and foreground colors to the body using standard CSS */
+    /* @apply bg-background text-foreground; */ /* <-- REMOVED THIS LINE */
+    background-color: hsl(var(--background)); /* <-- ADDED THIS LINE */
+    color: hsl(var(--foreground)); /* <-- ADDED THIS LINE */
+
+    /* Apply font smoothing for better text rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/*
+  Removed base styles for:
+  - font-family, line-height, font-weight (Handled by Tailwind base styles or utilities)
+  - color-scheme, color, background-color (Handled by CSS variables and @apply)
+  - font-synthesis, text-rendering (Less common overrides, add back if needed)
+  - a, h1, button (Should be styled using Tailwind utilities or component styles)
+  - @media (prefers-color-scheme: light) (Handled by the .dark class toggle)
+  - @theme inline (Handled by the :root/.dark variable definitions)
+*/
